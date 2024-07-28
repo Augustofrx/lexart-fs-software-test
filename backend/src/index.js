@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://lexart-fs-software-test-kcbo.vercel.app/",
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   },
@@ -35,6 +35,7 @@ app.use(
     origin: "https://lexart-fs-software-test-kcbo.vercel.app",
   })
 );
+
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
