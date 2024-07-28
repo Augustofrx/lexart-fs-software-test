@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 const config = require("../config/config");
-import pg from "pg";
+const pg = require("pg");
 
 const sequelize = new Sequelize(
   config.dbName,
