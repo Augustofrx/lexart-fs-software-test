@@ -69,6 +69,8 @@ const deleteProduct = async (req, res) => {
 };
 
 const deleteAllProducts = async (req, res) => {
+  const io = req.app.get("io");
+
   try {
     const count = await models.Product.count();
     if (count === 0) {
@@ -77,7 +79,18 @@ const deleteAllProducts = async (req, res) => {
         .json({ message: "No se han encontrado productos para eliminar" });
     }
 
-    await models.Product.update({ isDeleted: true }, { where: {} });
+    const products = await models.Product.findAll({
+      where: { isDeleted: false },
+    });
+    const totalProducts = products.length;
+
+    for (let i = 0; i < totalProducts; i++) {
+      await products[i].update({ isDeleted: true });
+
+      const progress = Math.round(((i + 1) / totalProducts) * 100);
+      io.emit("deleteProgress", { progress });
+    }
+
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ message: error.message });
