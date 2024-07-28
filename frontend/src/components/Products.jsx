@@ -4,6 +4,7 @@ import axios from "../axios.config";
 import Modal from "./Modal";
 import EditProductForm from "./EditProductForm";
 import Swal from "sweetalert2";
+import Navbar from "./Navbar";
 
 const fetchProducts = async () => {
   const response = await axios.get("/products");
@@ -33,7 +34,7 @@ const Products = () => {
   };
 
   const handleDeleteAll = async () => {
-    await axios.delete(`/products/deleteAll`);
+    await axios.put(`/products/deleteAll`);
     refetch();
     await Swal.fire({
       icon: "success",
@@ -93,24 +94,7 @@ const Products = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <nav className="w-full mt-1 py-4 bg-gray-50 rounded-lg shadow-md flex items-center justify-between px-4">
-        <div>
-          <p className="text-xl font-semibold text-blue-900">Lexart</p>
-        </div>
-        <div className="flex gap-4 font-semibold">
-          <a className=" text-blue-600" href="">
-            Productos
-          </a>
-          |
-          <a className="  text-blue-600" href="">
-            Agregar Producto
-          </a>
-          |
-          <a className="  text-blue-600" href="">
-            Registros
-          </a>
-        </div>
-      </nav>
+      <Navbar />
       <div className="max-w-6xl mx-auto border p-4 rounded-lg shadow-md my-4 bg-gray-50">
         <section className="flex justify-between">
           <h2 className="text-2xl font-bold mb-4">Lista de Smartphones</h2>

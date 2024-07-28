@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Products from "./components/Products";
+import Create from "./components/Create";
+import { RecordsList } from "./components/RecordsList";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -20,6 +22,8 @@ root.render(
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/records-list" element={<RecordsList />} />
       </Routes>
     </Router>
   </QueryClientProvider>

@@ -31,7 +31,7 @@ const Login = () => {
     <div className="w-full h-full min-h-screen flex flex-col justify-center items-center">
       <h1 className="my-4 text-2xl font-bold">Bienvenido a Lexart Phones</h1>
       <div className="w-96 mx-auto p-4 border  bg-white rounded-lg shadow-md ">
-        <h2 className="text-sm mb-4">Ingresa tus credenciales</h2>
+        <h2 className="text-xs text-center mb-4">Ingresa tus credenciales</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -63,8 +63,13 @@ const Login = () => {
             type="submit"
             className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Login
+            Ingresar
           </button>
+          <div className="w-full text-center">
+            <a href="/register" className="link link-primary text-center">
+              ¿Aún no tienes cuenta? Registrate aquí.
+            </a>
+          </div>
         </form>
       </div>
     </div>
