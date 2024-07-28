@@ -10,10 +10,16 @@ dotenv.config();
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
+    origin: "*",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   },
@@ -29,12 +35,6 @@ io.on("connection", (socket) => {
 });
 
 app.set("io", io);
-
-app.use(
-  cors({
-    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
-  })
-);
 
 app.use(express.json());
 
