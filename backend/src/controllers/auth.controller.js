@@ -12,12 +12,12 @@ const login = async (req, res) => {
     const validateUser = await models.User.findOne({ where: { email } });
     const user = validateUser.dataValues;
     if (!validateUser || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(401).json({ message: "Email o contraseña invalido" });
     }
     const accessToken = jwt.sign(user, JWT_SECRET, { expiresIn: "1h" });
     res.json({ accessToken });
   } catch (error) {
-    res.status(400).json({ message: "Error logging in", error });
+    res.status(400).json({ message: "Error al autenticarse", error });
   }
 };
 
@@ -25,7 +25,10 @@ const register = async (userData) => {
   const { name, email, password } = userData;
   const hashedPassword = await bcrypt.hash(password, 10);
   const validateUser = await models.User.findOne({ where: { email } });
-
+  if (validateUser)
+    throw new Error(
+      "El usuario ya se encuentra registrado en nuestro sistema."
+    );
   try {
     if (!validateUser) {
       const user = await models.User.create({

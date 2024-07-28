@@ -53,6 +53,27 @@ router.post("/", authenticateToken, productController.createProduct);
 
 /**
  * @swagger
+ * /api/products/deleteAll:
+ *   delete:
+ *     summary: Elimina todos los productos
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       204:
+ *         description: Todos los productos han sido eliminados
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
+
+router.put(
+  "/deleteAll",
+  authenticateToken,
+  productController.deleteAllProducts
+);
+
+/**
+ * @swagger
  * /api/products/{id}:
  *   put:
  *     summary: Actualiza un producto existente
@@ -96,26 +117,6 @@ router.post("/", authenticateToken, productController.createProduct);
  *         $ref: '#/components/responses/ServerError'
  */
 router.put("/:id", authenticateToken, productController.editProduct);
-
-/**
- * @swagger
- * /api/products/deleteAll:
- *   delete:
- *     summary: Elimina todos los productos
- *     tags: [Products]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       204:
- *         description: Todos los productos han sido eliminados
- *       500:
- *         $ref: '#/components/responses/ServerError'
- */
-router.delete(
-  "/deleteAll",
-  authenticateToken,
-  productController.deleteAllProducts
-);
 
 router.put(
   "/deleteOne/:id",

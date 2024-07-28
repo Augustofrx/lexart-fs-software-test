@@ -67,7 +67,14 @@ const deleteProduct = async (req, res) => {
 
 const deleteAllProducts = async (req, res) => {
   try {
-    await models.Product.destroy({ where: {} });
+    const count = await models.Product.count();
+    if (count === 0) {
+      return res
+        .status(404)
+        .json({ message: "No se han encontrado productos para eliminar" });
+    }
+
+    await models.Product.update({ isDeleted: true }, { where: {} });
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ message: error.message });
