@@ -35,14 +35,14 @@ app.set("io", io);
 app.use(cors());
 app.use(express.json());
 
+const routerApi = require("./routes");
+routerApi(app);
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.get("/", (req, res) => {
   res.send("Backend with Node + Express + PostgreSQL");
 });
-
-const routerApi = require("./routes");
-routerApi(app);
 
 server.listen(port, () => {
   console.log(`Backend is running on port ${port} \nhttp://localhost:${port}`);
