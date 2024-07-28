@@ -34,11 +34,14 @@ const EditProductForm = ({ product, onClose, onSave }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h3 className="text-lg font-bold mb-4">Editar Producto</h3>
+      <h3 className="text-lg font-bold mb-4">Editar producto</h3>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium">Modelo</label>
+        <label htmlFor="model" className="block text-sm font-medium">
+          Modelo
+        </label>
         <input
+          id="model"
           type="text"
           {...register("model", { required: "Modelo es requerido" })}
           className="input input-bordered w-full"
@@ -49,8 +52,11 @@ const EditProductForm = ({ product, onClose, onSave }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium">Marca</label>
+        <label htmlFor="brand" className="block text-sm font-medium">
+          Marca
+        </label>
         <input
+          id="brand"
           type="text"
           {...register("brand", { required: "Marca es requerida" })}
           className="input input-bordered w-full"
@@ -61,8 +67,11 @@ const EditProductForm = ({ product, onClose, onSave }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium">Descripción</label>
+        <label htmlFor="description" className="block text-sm font-medium">
+          Descripción
+        </label>
         <textarea
+          id="description"
           rows={3}
           {...register("description", { required: "Descripción es requerida" })}
           className="textarea textarea-bordered w-full resize-none"
@@ -73,12 +82,15 @@ const EditProductForm = ({ product, onClose, onSave }) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium">Precio</label>
+        <label htmlFor="price" className="block text-sm font-medium">
+          Precio
+        </label>
         <input
+          id="price"
           type="number"
           {...register("price", {
             required: "Precio es requerido",
-            min: { value: 0, message: "Precio debe ser mayor o igual a 0" },
+            min: { value: 1, message: "Precio debe ser mayor o igual a 1" },
           })}
           className="input input-bordered w-full"
         />

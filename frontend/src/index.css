@@ -11,6 +11,10 @@ body, :root {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  background-color:  #60a5fa ;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

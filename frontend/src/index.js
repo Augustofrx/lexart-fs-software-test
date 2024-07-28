@@ -6,7 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Products from "./components/Products";
 import Create from "./components/Create";
-import { RecordsList } from "./components/RecordsList";
+import RecordsList from "./components/RecordsList";
 import "./index.css";
 
 const queryClient = new QueryClient();
