@@ -6,6 +6,9 @@ const swaggerSpecs = require("./swaggerOptions");
 const http = require("http");
 const socketIo = require("socket.io");
 
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
 require("./libs/sequelize");
 
 dotenv.config();
@@ -36,7 +39,11 @@ app.set("io", io);
 app.use(cors());
 app.use(express.json());
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpecs, { customCssUrl: CSS_URL })
+);
 
 app.get("/", (req, res) => {
   res.send("Backend with Node + Express + PostgreSQL");
