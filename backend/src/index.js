@@ -30,7 +30,11 @@ io.on("connection", (socket) => {
 
 app.set("io", io);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
+  })
+);
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
