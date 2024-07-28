@@ -2,9 +2,12 @@ const { models } = require("../libs/sequelize");
 
 const getAllProducts = async (req, res) => {
   try {
+    const { isDeleted } = req.query;
+
     const products = await models.Product.findAll({
-      where: { isDeleted: false },
+      where: { isDeleted: isDeleted },
     });
+
     res.json(products);
   } catch (error) {
     res.status(500).json({ message: error.message });

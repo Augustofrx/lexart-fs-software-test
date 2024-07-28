@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/product.controller");
 const authenticateToken = require("../middlewares/auth.middleware");
-
 /**
  * @swagger
  * /api/products:
@@ -11,6 +10,12 @@ const authenticateToken = require("../middlewares/auth.middleware");
  *     tags: [Products]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: isDeleted
+ *         schema:
+ *           type: boolean
+ *         description: Filtra los productos por su estado de eliminación (true o false)
  *     responses:
  *       200:
  *         description: La lista de los productos
