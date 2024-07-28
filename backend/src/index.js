@@ -16,10 +16,16 @@ app.use(
   })
 );
 
+app.use(
+  cors({
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app/",
+  })
+);
+
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app/",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   },
