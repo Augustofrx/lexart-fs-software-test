@@ -1,16 +1,16 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpecs = require("./swaggerOptions");
 const http = require("http");
 const socketIo = require("socket.io");
 
-require("./libs/sequelize");
-
 dotenv.config();
 
 const app = express();
+app.use(express.static(path.join(__dirname, "../public")));
 
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -35,14 +35,18 @@ app.set("io", io);
 app.use(cors());
 app.use(express.json());
 
-const routerApi = require("./routes");
-routerApi(app);
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
+app.get("/swagger-ui", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/swagger-ui.html"));
+});
 
 app.get("/", (req, res) => {
   res.send("Backend with Node + Express + PostgreSQL");
 });
+
+const routerApi = require("./routes");
+routerApi(app);
 
 server.listen(port, () => {
   console.log(`Backend is running on port ${port} \nhttp://localhost:${port}`);
