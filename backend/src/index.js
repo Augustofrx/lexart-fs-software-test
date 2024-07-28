@@ -11,6 +11,8 @@ require("./libs/sequelize");
 dotenv.config();
 
 const app = express();
+app.use(express.static("public"));
+
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
