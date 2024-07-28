@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 const config = require("../config/config");
+import pg from "pg";
 
 const sequelize = new Sequelize(
   config.dbName,
@@ -9,6 +10,7 @@ const sequelize = new Sequelize(
     host: config.dbHost,
     port: config.dbPort,
     dialect: "postgres",
+    dialectModule: pg,
     logging: false,
   }
 );
