@@ -1,9 +1,27 @@
 # lexart-fs-software-test - Proyecto Fullstack
 
-Este es un proyecto fullstack con un front-end desarrollado en React y un back-end en Node.js utilizando Express, Sequelize y PostgreSQL.
+Este es un proyecto fullstack que simula un sistema de administración para celulares smartphones con un front-end desarrollado en React y un back-end en Node.js utilizando Express, Sequelize y PostgreSQL.
 Tambien incluye documentación del backend con Swagger e implementación de Web Sockets con Socket.io
 
-## Requisitos
+## Importante a tener en cuenta.
+
+La primer petición que se realice al backend por ejemplo el inicio de sesión, puede demorar hasta 1 minuto en caso de que el servidor haya estado sin uso, esto se debe a que el servidor se encuentra alojado en la capa gratuita de [https://render.com](https://render.com)
+
+Una vez el servidor se pone en funcionamiento el resto de peticiones funciona con normalidad.
+
+### Acceso mediante Deploy
+
+Frontend: [https://lexart-fs-software-test-kcbo.vercel.app](https://lexart-fs-software-test-kcbo.vercel.app)
+
+Backend: [https://lexart-fs-software-test-backend.onrender.com](https://lexart-fs-software-test-backend.onrender.com)
+
+### Acceso a documentación 
+
+Docs: [https://lexart-fs-software-test-backend.onrender.com/api-docs]( https://lexart-fs-software-test-backend.onrender.com/api-docs)
+
+## Instalación local
+
+### Requisitos
 
 - Node.js (v14 o superior)
 - npm (v6 o superior)
@@ -71,6 +89,8 @@ npm start
  ```
 
 ### 4. Uso de la aplicación
+
 Accede a la aplicación frontend en tu navegador en http://localhost:3000.
+
 La aplicación hará llamadas al servidor back-end en http://localhost:3001.
 
