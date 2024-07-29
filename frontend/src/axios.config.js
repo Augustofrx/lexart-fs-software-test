@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://lexart-fs-software-test-backend.onrender.com",
+  baseURL: "https://lexart-fs-software-test-backend.onrender.com/api",
 });
 
 instance.interceptors.request.use(
