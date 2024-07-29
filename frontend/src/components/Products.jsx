@@ -32,7 +32,7 @@ const Products = () => {
   const [progressVisible, setProgressVisible] = useState(false);
 
   useEffect(() => {
-    const socket = io("https://lexart-fs-software-test.vercel.app", {
+    const socket = io("https://lexart-fs-software-test-backend.onrender.com", {
       transports: ["websocket"],
     });
     socket.on("deleteProgress", ({ progress }) => {

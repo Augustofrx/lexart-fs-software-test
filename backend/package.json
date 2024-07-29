@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "build": "webpack --mode production"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
