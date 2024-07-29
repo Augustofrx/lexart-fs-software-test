@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="w-full h-full min-h-screen flex bg-blue-100  justify-center items-center">
-      <section className="w-full h-screen bg-blue-400 flex justify-center items-center">
+      <section className="hidden w-full h-screen bg-blue-400 lg:flex justify-center items-center">
         {" "}
         <h1 className="text-5xl font-bold text-white">Bienvenido a Lexart.</h1>
       </section>

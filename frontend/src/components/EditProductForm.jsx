@@ -23,7 +23,7 @@ const EditProductForm = ({ product, onClose, onSave }) => {
       onSave();
       onClose();
     } catch (error) {
-      console.error("Error updating product:", error);
+      console.error("Ocurrio un error al actualizar el producto:", error);
       await Swal.fire({
         icon: "error",
         title: "Error",
