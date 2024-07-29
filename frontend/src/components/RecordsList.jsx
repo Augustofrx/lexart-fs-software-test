@@ -36,10 +36,6 @@ const RecordsList = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  if (isLoading) {
-    return <div className="text-center">Cargando...</div>;
-  }
-
   if (error) {
     return (
       <div className="text-center text-red-500">
@@ -67,18 +63,18 @@ const RecordsList = () => {
             <button
               className="btn btn-sm bg-green-500 hover:bg-green-400 border-none text-white"
               onClick={toggleSortOrder}
-              disabled={sortedProducts.length === 0}
+              disabled={sortedProducts?.length === 0}
             >
               Ordenar por precio (
               {sortOrder === "asc" ? "Ascendente ⬆️" : "Descendente ⬇️"})
             </button>
             <span className="text-xs">
-              Listando: {sortedProducts.length} productos
+              Listando: {sortedProducts?.length} productos
             </span>
           </section>
         </div>
         <div className="overflow-x-auto lg:h-[700px]">
-          {sortedProducts.length > 0 ? (
+          {sortedProducts?.length > 0 ? (
             <table className="table w-full">
               <thead>
                 <tr>
@@ -90,29 +86,46 @@ const RecordsList = () => {
                     <button
                       className="btn btn-sm btn-link ml-2"
                       onClick={toggleSortOrder}
-                      disabled={sortedProducts.length === 0}
+                      disabled={sortedProducts?.length === 0}
                     >
                       {sortOrder === "asc" ? "⬆️" : "⬇️"}
                     </button>
                   </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                {sortedProducts.map((product) => (
+                {sortedProducts?.map((product) => (
                   <tr key={product.id}>
                     <td>{product.model}</td>
                     <td>{product.brand}</td>
                     <td>{product.description}</td>
                     <td>${product.price}</td>
+                    <td className="flex gap-2">
+                      <button
+                        className="btn btn-sm btn-primary mr-2"
+                        onClick={() => handleEdit(product)}
+                      >
+                        Editar
+                      </button>
+                      <button
+                        className="btn btn-sm btn-error text-white"
+                        onClick={() => handleDelete(product.id)}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          ) : isLoading ? (
+            <div className="w-full h-full flex justify-center items-center text-center">
+              <span>Cargando productos...</span>
+            </div>
           ) : (
-            <div className="w-full h-full relative flex justify-center items-center">
-              <span className="text-error font-semibold">
-                No se han encontrado productos
-              </span>
+            <div className="w-full h-full flex justify-center items-center text-center">
+              <span>No se encontraron productos.</span>
             </div>
           )}
         </div>
