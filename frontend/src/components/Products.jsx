@@ -118,10 +118,6 @@ const Products = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  if (isLoading) {
-    return <div className="text-center">Cargando...</div>;
-  }
-
   if (error) {
     return (
       <div className="text-center text-red-500">
@@ -228,6 +224,10 @@ const Products = () => {
                 ))}
               </tbody>
             </table>
+          ) : isLoading ? (
+            <div className="w-full h-full flex justify-center items-center text-center">
+              <span>Cargando productos...</span>
+            </div>
           ) : (
             <div className="w-full h-full flex justify-center items-center text-center">
               <span>No se encontraron productos.</span>
