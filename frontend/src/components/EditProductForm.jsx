@@ -33,7 +33,7 @@ const EditProductForm = ({ product, onClose, onSave }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="max-w-6xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
       <h3 className="text-lg font-bold mb-4">Editar producto</h3>
 
       <div className="mb-4">
