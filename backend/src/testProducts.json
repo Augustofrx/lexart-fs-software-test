@@ -19,7 +19,7 @@
     { "model": "Mate 40 Pro", "brand": "Huawei", "description": "Smartphone Huawei con procesador Kirin 9000 y cámara de 50 MP.", "price": 1199 },
     { "model": "Mate 30 Pro", "brand": "Huawei", "description": "Smartphone Huawei con cámara cuádruple y pantalla OLED.", "price": 899 },
     { "model": "V60 ThinQ", "brand": "LG", "description": "Smartphone LG con pantalla OLED y cámara dual de 64 MP.", "price": 799 },
-    { "model": "K52", "brand": "LG", "description": "Smartphone LG con pantalla de 6.6 pulgadas y cámara de 48 MP.", "price": 199 },
+    { "model": "K50s", "brand": "LG", "description": "Smartphone LG con pantalla de 6.6 pulgadas, Triple Cámara, cámara frontal 13 MP y Modo Retrato.", "price": 179 },
     { "model": "V50 ThinQ", "brand": "LG", "description": "Smartphone LG con pantalla OLED y cámara triple de 12 MP.", "price": 649 },
     { "model": "V40 ThinQ", "brand": "LG", "description": "Smartphone LG con pantalla OLED y cámara triple.", "price": 549 },
     { "model": "G8 ThinQ", "brand": "LG", "description": "Smartphone LG con pantalla OLED y cámara triple de 12 MP.", "price": 499 },

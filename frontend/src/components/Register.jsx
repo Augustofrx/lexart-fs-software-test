@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "../axios.config";
 import { useNavigate } from "react-router-dom";
@@ -12,14 +12,18 @@ const Register = () => {
   } = useForm();
   const navigate = useNavigate();
 
+  const [isRegistering, setIsRegistering] = useState(false);
+
   const onSubmit = async (data) => {
     try {
+      setIsRegistering(true);
       await axios.post("/auth/register", data);
       await Swal.fire({
         icon: "success",
         title: "Registro exitoso",
         text: "Se ha registrado con exito el usuario en nuestra plataforma.",
       });
+      setIsRegistering(false);
       navigate("/");
     } catch (error) {
       await Swal.fire({
@@ -90,10 +94,11 @@ const Register = () => {
             )}
           </div>
           <button
+            disabled={isRegistering}
             type="submit"
-            className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 disabled:bg-blue-200 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Registrarse
+            {isRegistering ? "Registrando..." : "Registrarse"}
           </button>
         </form>
       </div>
