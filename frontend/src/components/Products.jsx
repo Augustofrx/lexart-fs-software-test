@@ -30,6 +30,7 @@ const Products = () => {
   const [productIdToDelete, setProductIdToDelete] = useState(null);
   const [deleteProgress, setDeleteProgress] = useState(0);
   const [progressVisible, setProgressVisible] = useState(false);
+  const [isLoadingTests, setIsLoadingTests] = useState(false);
 
   useEffect(() => {
     const socket = io("https://lexart-fs-software-test-backend.onrender.com", {
@@ -75,8 +76,15 @@ const Products = () => {
   };
 
   const handleLoadTests = async () => {
-    await axios.post(`/products/loadTestProducts`);
-    refetch();
+    try {
+      setIsLoadingTests(true);
+      await axios.post(`/products/loadTestProducts`);
+      refetch();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoadingTests(false);
+    }
   };
 
   const handleDelete = async (productId) => {
@@ -143,10 +151,13 @@ const Products = () => {
                 Eliminar todos
               </button>
               <button
+                disabled={isLoadingTests}
                 onClick={handleLoadTests}
                 className="btn btn-sm btn-warning"
               >
-                Cargar productos de prueba
+                {isLoadingTests
+                  ? "Cargando productos..."
+                  : "Cargar productos de prueba"}
               </button>
             </div>
           </div>
