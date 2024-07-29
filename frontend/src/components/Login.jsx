@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "../axios.config";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const [isLogging, setIsLogging] = useState(false);
   const {
     register,
     handleSubmit,
@@ -14,8 +15,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
+      setIsLogging(true);
       const response = await axios.post("/auth/login", data);
       localStorage.setItem("token", response.data.accessToken);
+      setIsLogging(false);
       navigate("/products");
     } catch (error) {
       console.error(error);
@@ -73,10 +76,11 @@ const Login = () => {
             )}
           </div>
           <button
+            disabled={isLogging}
             type="submit"
             className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Ingresar
+            {isLogging ? "Ingresando..." : "Ingresar"}
           </button>
           <div className="w-full text-center">
             <a href="/register" className="link link-primary text-center">
