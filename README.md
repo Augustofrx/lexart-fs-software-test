@@ -11,7 +11,8 @@ Una vez el servidor se pone en funcionamiento el resto de peticiones funciona co
 
 ### Acceso mediante Deploy
 
-Frontend: [https://lexart-fs-software-test-kcbo.vercel.app](https://lexart-fs-software-test-kcbo.vercel.app)
+Frontend: [https://lexart-fs-software-test-kcbo.vercel.app](https://lexart-fs-software-test-kcbo.vercel.app) ---> Usuario: *admin@tests.com*
+contraseña: *admintests123*
 
 Backend: [https://lexart-fs-software-test-backend.onrender.com](https://lexart-fs-software-test-backend.onrender.com)
 
