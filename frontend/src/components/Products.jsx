@@ -168,18 +168,18 @@ const Products = () => {
             <button
               className="btn btn-xs md:btn-sm bg-green-500 hover:bg-green-400 border-none text-white"
               onClick={toggleSortOrder}
-              disabled={sortedProducts.length === 0}
+              disabled={sortedProducts?.length === 0}
             >
               Ordenar por precio (
               {sortOrder === "asc" ? "Ascendente ⬆️" : "Descendente ⬇️"})
             </button>
             <span className="text-xs">
-              Listando: {sortedProducts.length} productos
+              Listando: {sortedProducts?.length} productos
             </span>
           </section>
         </div>
         <div className="overflow-x-auto lg:h-[700px]">
-          {sortedProducts.length > 0 ? (
+          {sortedProducts?.length > 0 ? (
             <table className="table w-full">
               <thead>
                 <tr>
@@ -191,7 +191,7 @@ const Products = () => {
                     <button
                       className="btn btn-sm btn-link ml-2"
                       onClick={toggleSortOrder}
-                      disabled={sortedProducts.length === 0}
+                      disabled={sortedProducts?.length === 0}
                     >
                       {sortOrder === "asc" ? "⬆️" : "⬇️"}
                     </button>
@@ -200,7 +200,7 @@ const Products = () => {
                 </tr>
               </thead>
               <tbody>
-                {sortedProducts.map((product) => (
+                {sortedProducts?.map((product) => (
                   <tr key={product.id}>
                     <td>{product.model}</td>
                     <td>{product.brand}</td>
