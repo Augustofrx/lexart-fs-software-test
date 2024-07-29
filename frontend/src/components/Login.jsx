@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const [isLogging, setIsLogging] = useState(false);
+  const [isLoggin, setIsLoggin] = useState(false);
   const {
     register,
     handleSubmit,
@@ -15,10 +15,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      setIsLogging(true);
+      setIsLoggin(true);
       const response = await axios.post("/auth/login", data);
       localStorage.setItem("token", response.data.accessToken);
-      setIsLogging(false);
+      setIsLoggin(false);
       navigate("/products");
     } catch (error) {
       console.error(error);
@@ -27,6 +27,8 @@ const Login = () => {
         title: "Credenciales invalidas",
         text: "Probablemente hayas ingresado incorrectamente tu email y/o contraseña.",
       });
+    } finally {
+      setIsLoggin(false);
     }
   };
 
@@ -76,11 +78,11 @@ const Login = () => {
             )}
           </div>
           <button
-            disabled={isLogging}
+            disabled={isLoggin}
             type="submit"
-            className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 bg-blue-500 disabled:bg-blue-200 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            {isLogging ? "Ingresando..." : "Ingresar"}
+            {isLoggin ? "Ingresando..." : "Ingresar"}
           </button>
           <div className="w-full text-center">
             <a href="/register" className="link link-primary text-center">
