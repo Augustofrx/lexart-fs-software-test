@@ -262,6 +262,7 @@ const Products = () => {
       </Modal>
 
       <DeleteConfirmationForm
+        isDeleting={isDeleting}
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={confirmDelete}
@@ -271,7 +272,6 @@ const Products = () => {
       />
 
       <DeleteConfirmationForm
-        isDeleting={isDeleting}
         isOpen={isDeleteAllModalOpen}
         onClose={() => setIsDeleteAllModalOpen(false)}
         onConfirm={handleDeleteAll}
