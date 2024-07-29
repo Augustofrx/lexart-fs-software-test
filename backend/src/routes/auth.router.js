@@ -50,14 +50,36 @@ router.post("/login", authController.login);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 format: password
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *
  *     responses:
  *       201:
  *         description: Usuario registrado exitosamente
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 name:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                   format: email
  *       400:
  *         $ref: '#/components/responses/BadRequest'
  */
