@@ -1,6 +1,12 @@
 import React from "react";
 
-const DeleteConfirmationForm = ({ context, isOpen, onClose, onConfirm }) => {
+const DeleteConfirmationForm = ({
+  isDeleting,
+  context,
+  isOpen,
+  onClose,
+  onConfirm,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -13,7 +19,7 @@ const DeleteConfirmationForm = ({ context, isOpen, onClose, onConfirm }) => {
             Cancelar
           </button>
           <button className="btn btn-error text-white" onClick={onConfirm}>
-            Eliminar
+            {isDeleting ? "Eliminando..." : "Eliminar"}
           </button>
         </div>
       </div>

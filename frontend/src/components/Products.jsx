@@ -31,6 +31,7 @@ const Products = () => {
   const [deleteProgress, setDeleteProgress] = useState(0);
   const [progressVisible, setProgressVisible] = useState(false);
   const [isLoadingTests, setIsLoadingTests] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const socket = io("https://lexart-fs-software-test-backend.onrender.com", {
@@ -67,7 +68,7 @@ const Products = () => {
       await axios.put(`/products/deleteAll`);
       refetch();
     } catch (error) {
-      console.error("Error deleting all products:", error);
+      console.error("Error al eliminar todos los productos:", error);
     }
   };
 
@@ -94,6 +95,7 @@ const Products = () => {
 
   const confirmDelete = async () => {
     try {
+      setIsDeleting(true);
       await axios.put(`/products/deleteOne/${productIdToDelete}`);
       await Swal.fire({
         icon: "success",
@@ -104,7 +106,9 @@ const Products = () => {
       setIsDeleteModalOpen(false);
       setProductIdToDelete(null);
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error("Error eliminando producto:", error);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -267,6 +271,7 @@ const Products = () => {
       />
 
       <DeleteConfirmationForm
+        isDeleting={isDeleting}
         isOpen={isDeleteAllModalOpen}
         onClose={() => setIsDeleteAllModalOpen(false)}
         onConfirm={handleDeleteAll}
