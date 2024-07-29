@@ -136,7 +136,7 @@ const Products = () => {
 
             <div className="flex gap-2">
               <button
-                disabled={sortedProducts.length === 0}
+                disabled={sortedProducts?.length === 0}
                 onClick={openDeleteAllConfirmModal}
                 className="btn btn-sm btn-error text-white"
               >
