@@ -146,18 +146,18 @@ const Products = () => {
           <div className="flex justify-between items-center md:items-start mb-4 md:mb-0 w-full">
             <h2 className="text-2xl mb-4">Lista de Smartphones</h2>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col md:flex-row gap-2">
               <button
                 disabled={sortedProducts?.length === 0}
                 onClick={openDeleteAllConfirmModal}
-                className="btn btn-sm btn-error text-white"
+                className="btn  btn-xs md:btn-sm btn-error text-white"
               >
                 Eliminar todos
               </button>
               <button
                 disabled={isLoadingTests}
                 onClick={handleLoadTests}
-                className="btn btn-sm btn-warning"
+                className="btn  btn-xs md:btn-sm btn-warning"
               >
                 {isLoadingTests
                   ? "Cargando productos..."

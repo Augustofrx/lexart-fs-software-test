@@ -18,7 +18,11 @@ const DeleteConfirmationForm = ({
           <button className="btn bg-gray-300" onClick={onClose}>
             Cancelar
           </button>
-          <button className="btn btn-error text-white" onClick={onConfirm}>
+          <button
+            disabled={isDeleting}
+            className="btn btn-error text-white"
+            onClick={onConfirm}
+          >
             {isDeleting ? "Eliminando..." : "Eliminar"}
           </button>
         </div>

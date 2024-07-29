@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "../axios.config";
 import Swal from "sweetalert2";
@@ -13,18 +13,22 @@ const Create = () => {
     reset,
   } = useForm();
 
+  const [isCreating, setIsCreating] = useState(false);
+
   const onSubmit = async (data) => {
     const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
     const userId = decodedToken.id;
 
     try {
+      setIsCreating(true);
       await axios.post("/products", { ...data, userId });
       await Swal.fire({
         icon: "success",
         title: "Producto creado",
         text: "El producto se ha creado con éxito.",
       });
+      setIsCreating(false);
       reset();
     } catch (error) {
       await Swal.fire({
@@ -122,7 +126,7 @@ const Create = () => {
             type="submit"
             className="w-full px-4 py-2 bg-green-500 text-white font-semibold rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
-            Agregar producto
+            {isCreating ? "Agregando producto..." : "Agregar producto"}
           </button>
         </form>
       </div>
