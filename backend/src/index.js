@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
   })
 );
 
@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: "https://lexart-fs-software-test-kcbo.vercel.app",
     methods: ["GET", "POST"],
   },
 });
@@ -48,5 +48,5 @@ const routerApi = require("./routes");
 routerApi(app);
 
 server.listen(port, () => {
-  console.log(`Backend is running on port ${port} \nhttp://localhost:${port}`);
+  console.log(`Backend is alive :D`);
 });
