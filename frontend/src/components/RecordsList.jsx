@@ -101,20 +101,6 @@ const RecordsList = () => {
                     <td>{product.brand}</td>
                     <td>{product.description}</td>
                     <td>${product.price}</td>
-                    <td className="flex gap-2">
-                      <button
-                        className="btn btn-sm btn-primary mr-2"
-                        onClick={() => handleEdit(product)}
-                      >
-                        Editar
-                      </button>
-                      <button
-                        className="btn btn-sm btn-error text-white"
-                        onClick={() => handleDelete(product.id)}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
                   </tr>
                 ))}
               </tbody>
