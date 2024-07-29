@@ -1,4 +1,4 @@
-# lexart-fs-software-test - Proyecto Fullstack
+# Prueba Técnica Fullstack Lexart
 
 Este es un proyecto fullstack que simula un sistema de administración para celulares smartphones con un front-end desarrollado en React y un back-end en Node.js utilizando Express, Sequelize y PostgreSQL.
 Tambien incluye documentación del backend con Swagger e implementación de Web Sockets con Socket.io
